@@ -1,0 +1,12 @@
+LOAD '@abs_builddir@/query_info_hook_test/query_info_hook_test@DLSUFFIX@';
+SET client_min_messages='warning';
+
+-- Test Normal case
+SELECT 1 AS a;
+
+-- Test Error case
+SELECT 1/0 AS a;
+
+-- Test query abort
+select pg_cancel_backend(pg_backend_pid());
+
